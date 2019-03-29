@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -32,9 +33,12 @@ const RVAppBar = (props) => {
         >
           Les fieres
         </Typography>
-        <Button>Features</Button>
-        <Button>Enterprise</Button>
-        <Button>Support</Button>
+        <Link to={'books'} className="btn btn-dark btn-block">
+          <Button>Books</Button>
+        </Link>
+        <Link to={''} className="btn btn-dark btn-block">
+          <Button>Home</Button>
+        </Link>
         <Button color="primary" variant="outlined">
           Login
         </Button>
