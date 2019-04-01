@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // eslint-disable-line no-unused-vars, prop-types
 import { useDebounce } from 'react-use';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core';
 import Item from '../Item/Item';
 
-const Books = () => {
-  const [books, setBooks] = useState([]); // TODO -> array state hook?
+const styles = {
+  searchInput: {
+    width: 200,
+  },
+};
+
+const Books = (props) => {
+  const { classes } = props;
+  const [books, setBooks] = useState([]);
   const [inputSearch, setInputSearch] = useState('');
 
   const fetchData = async () => {
@@ -15,17 +23,7 @@ const Books = () => {
     setBooks(result.data);
   };
 
-  useDebounce(
-    () => {
-      fetchData();
-    },
-    500,
-    [inputSearch],
-  );
-
-  const textFieldStyle = {
-    width: 200,
-  };
+  useDebounce(() => fetchData(), 500, [inputSearch]);
 
   return (
     <div>
@@ -34,7 +32,7 @@ const Books = () => {
         id="standard-search"
         label="Search field"
         type="search"
-        style={textFieldStyle}
+        className={classes.searchInput}
         margin="normal"
         value={inputSearch}
         onChange={e => setInputSearch(e.target.value)}
@@ -48,4 +46,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default withStyles(styles)(Books);
