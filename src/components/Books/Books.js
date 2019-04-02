@@ -1,48 +1,65 @@
-import React, { useState } from 'react'; // eslint-disable-line no-unused-vars, prop-types
+import React, { useState, useCallback, useEffect } from 'react'; // eslint-disable-line no-unused-vars, prop-types
 import { useDebounce } from 'react-use';
-import axios from 'axios';
+import { useMappedState, useDispatch } from 'redux-react-hook';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Item from '../Item/Item';
+import { fetchBooks } from '../../redux/actions/bookActions';
 
 const styles = {
   searchInput: {
-    width: 200,
+    color: '#fff',
   },
 };
 
-const Books = (props) => {
+const Books = props => {
   const { classes } = props;
-  const [books, setBooks] = useState([]);
   const [inputSearch, setInputSearch] = useState('');
+  const [performingSearch, setPerformingSearch] = useState(false);
 
-  const fetchData = async () => {
-    const result = await axios.get(
-      `http://localhost:8081/search-book?title=%22${inputSearch}%22&from=1&to=3`,
-    );
-    setBooks(result.data);
-  };
+  const mapState = state => state.books;
+  const { books } = useMappedState(mapState);
 
-  useDebounce(() => fetchData(), 500, [inputSearch]);
+  const dispatch = useDispatch();
+  const fetchBooksCallback = useCallback(fetchBooks(inputSearch, dispatch));
+  useDebounce(fetchBooksCallback, 500, [inputSearch]);
+
+  useEffect(() => {
+    setPerformingSearch(false);
+  }, [books]);
+
+  useEffect(() => {
+    setPerformingSearch(true);
+  }, [inputSearch]);
 
   return (
-    <div>
-      <h1>Books</h1>
+    <React.Fragment>
       <TextField
         id="standard-search"
-        label="Search field"
+        label="Search"
         type="search"
         className={classes.searchInput}
         margin="normal"
+        fullWidth
         value={inputSearch}
         onChange={e => setInputSearch(e.target.value)}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
       />
+      {performingSearch && <CircularProgress className={classes.progress} />}
       <div>
-        {books.map(book => (
-          <Item key={book.id} item={book} />
-        ))}
+        {!performingSearch
+          && books.map(book => <Item key={book.id} item={book} />)}
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

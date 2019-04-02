@@ -19,7 +19,7 @@ const styles = theme => ({
   },
 });
 
-const App = props => {
+const App = (props) => {
   const { classes } = props;
 
   return (

@@ -3,11 +3,14 @@
   "plugins": ["react", "react-hooks"],
   "rules": {
     "max-len": [1, 120, 2, { "ignoreComments": true }],
-    "prop-types": [2],
     "react/jsx-uses-vars": ["error"],
     "no-debugger": ["warn"],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "arrow-parens": "off",
+    "prop-types": "off",
+    "no-console": "off",
+    "space-before-function-paren": "off"
   },
   "globals": {
     "window": true,

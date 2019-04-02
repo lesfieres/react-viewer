@@ -12,10 +12,12 @@ import Typography from '@material-ui/core/Typography';
 const styles = {
   card: {
     maxWidth: 500,
+    height: 180,
     marginBottom: 20,
   },
   cardMedia: {
-    width: 140,
+    height: 125,
+    width: 'auto',
   },
   cardContent: {
     flex: '1 0',
@@ -25,7 +27,7 @@ const styles = {
   },
 };
 
-const Item = (props) => {
+const Item = props => {
   const { title, author, image_url: imageUrl } = props.item;
   const { classes } = props;
 
