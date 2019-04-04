@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const Books = props => {
+export const Books = props => {
   const { classes } = props;
   const [inputSearch, setInputSearch] = useState('');
   const [performingSearch, setPerformingSearch] = useState(false);
@@ -29,7 +29,7 @@ const Books = props => {
 
   useEffect(() => {
     setPerformingSearch(false);
-  }, [books]);
+  }, [books, inputSearch]);
 
   useEffect(() => {
     setPerformingSearch(true);
@@ -55,7 +55,7 @@ const Books = props => {
         }}
       />
       {performingSearch && <CircularProgress className={classes.progress} />}
-      <div>
+      <div className="item-list">
         {!performingSearch
           && books.map(book => <Item key={book.id} item={book} />)}
       </div>
