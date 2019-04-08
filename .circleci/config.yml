@@ -82,7 +82,7 @@ jobs:
           at: ~/repo
       - run:
           name: 'Run unit tests'
-          command: npm run test:unit
+          command: npm run test
 workflows:
   version: 2.1
   build_and_test:
