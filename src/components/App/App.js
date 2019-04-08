@@ -1,6 +1,6 @@
 /* eslint-disable prop-types */
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,11 +19,11 @@ const styles = theme => ({
   },
 });
 
-const App = (props) => {
+const App = props => {
   const { classes } = props;
 
   return (
-    <Router>
+    <BrowserRouter>
       <React.Fragment>
         <CssBaseline />
         <div className="App">
@@ -38,7 +38,7 @@ const App = (props) => {
           </div>
         </div>
       </React.Fragment>
-    </Router>
+    </BrowserRouter>
   );
 };
 

@@ -27,10 +27,9 @@ describe('Books component test', () => {
     renderer.render(<Books classes={{}} />);
     const result = renderer.getRenderOutput();
 
-    expect(result.props.children.length).toEqual(3);
+    expect(result.props.children.length).toEqual(2);
     expect(result.props.children[0].props.id).toEqual('standard-search');
-    expect(result.props.children[1]).toEqual(false);
-    expect(result.props.children[2]).toEqual(
+    expect(result.props.children[1]).toEqual(
       <div className="item-list">{[]}</div>,
     );
   });
@@ -43,12 +42,11 @@ describe('Books component test', () => {
     renderer.render(<Books classes={{}} />);
     const result = renderer.getRenderOutput();
 
-    expect(result.props.children.length).toEqual(3);
+    expect(result.props.children.length).toEqual(2);
     expect(result.props.children[0].props.id).toEqual('standard-search');
-    expect(result.props.children[1]).toEqual(false);
 
     setTimeout(() => {
-      expect(result.props.children[2]).toEqual(
+      expect(result.props.children[1]).toEqual(
         <div className="item-list">
           <Item key="1" item={{ id: '1', author: {} }} />
           <Item key="2" item={{ id: '2', author: {} }} />

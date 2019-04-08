@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-export const Books = props => {
+export const BooksNoStyled = props => {
   const { classes } = props;
   const [inputSearch, setInputSearch] = useState('');
   const [performingSearch, setPerformingSearch] = useState(false);
@@ -28,12 +28,12 @@ export const Books = props => {
   useDebounce(fetchBooksCallback, 500, [inputSearch]);
 
   useEffect(() => {
-    setPerformingSearch(false);
-  }, [books, inputSearch]);
-
-  useEffect(() => {
     setPerformingSearch(true);
   }, [inputSearch]);
+
+  useEffect(() => {
+    setPerformingSearch(false);
+  }, [books]);
 
   return (
     <React.Fragment>
@@ -54,13 +54,17 @@ export const Books = props => {
           ),
         }}
       />
-      {performingSearch && <CircularProgress className={classes.progress} />}
-      <div className="item-list">
-        {!performingSearch
-          && books.map(book => <Item key={book.id} item={book} />)}
-      </div>
+      {performingSearch ? (
+        <CircularProgress className={classes.progress} />
+      ) : (
+        <div className="item-list">
+          {!performingSearch
+            && books.map(book => <Item key={book.id} item={book} />)}
+        </div>
+      )}
     </React.Fragment>
   );
 };
 
-export default withStyles(styles)(Books);
+const Books = withStyles(styles)(BooksNoStyled);
+export default Books;
