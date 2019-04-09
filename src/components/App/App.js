@@ -1,12 +1,15 @@
 /* eslint-disable prop-types */
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles } from '@material-ui/core/styles';
 
 import AppBar from '../AppBar/AppBar';
-import logo from '../../logo.svg';
 import './App.css';
+
+import Books from '../Books/Books';
+import Home from '../Home/Home';
 
 const styles = theme => ({
   '@global': {
@@ -16,32 +19,26 @@ const styles = theme => ({
   },
 });
 
-const App = (props) => {
+const App = props => {
   const { classes } = props;
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <div className="App">
-        <header>
-          <AppBar classes={classes} />
-        </header>
-        <div className="App-body">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/components/App/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+    <BrowserRouter>
+      <React.Fragment>
+        <CssBaseline />
+        <div className="App">
+          <header>
+            <AppBar classes={classes} />
+          </header>
+          <div className="App-body">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/books" component={Books} />
+            </Switch>
+          </div>
         </div>
-      </div>
-    </React.Fragment>
+      </React.Fragment>
+    </BrowserRouter>
   );
 };
 
