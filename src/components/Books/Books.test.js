@@ -4,7 +4,7 @@ import React from 'react';
 import { useMappedState } from 'redux-react-hook';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import PropTypes from 'prop-types';
-import { Books } from './Books';
+import Books from './Books';
 import Item from '../Item/Item';
 
 jest.mock('../Item/Item');
