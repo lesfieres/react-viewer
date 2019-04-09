@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["react", "react-hooks"],
+  "plugins": ["react", "react-hooks", "cypress"],
   "rules": {
     "max-len": [1, 120, 2, { "ignoreComments": true }],
     "react/jsx-uses-vars": ["error"],
@@ -23,6 +23,9 @@
     "it": true,
     "fetch": true,
     "jest": true
+  },
+  "env": {
+    "cypress/globals": true
   },
   "extends": ["airbnb-base"]
 }
