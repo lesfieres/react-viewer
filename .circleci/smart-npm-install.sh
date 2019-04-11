@@ -1,2 +1,2 @@
 #!/bin/bash
-[ ! -d "node_modules" ] && npm install || echo "npm already installed"
+[ ! -d "node_modules" ] && npm ci || echo "npm already installed"

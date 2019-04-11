@@ -6,7 +6,7 @@ version: 2.1
 executors:
   react-viewer-docker:
     docker:
-      - image: circleci/node:10-browsers
+      - image: cypress/base:8
 commands:
   install-orient-express:
     description: 'Installs the orient express server either from cache or git clone'
@@ -63,26 +63,41 @@ jobs:
           at: ~/repo
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v6-dependencies-{{ checksum "package.json" }}
       - run:
           name: 'Install dependencies if needed'
           command: ./.circleci/smart-npm-install.sh
       - save_cache:
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - ~/.npm
+            - ~/.cache/Cypress
+          key: v6-dependencies-{{ checksum "package.json" }}
       - persist_to_workspace:
-          root: .
-          paths: .
+          root: ~/
+          paths:
+            - repo
+            - .npm
+            - .cache/Cypress
   test_unit:
     executor: react-viewer-docker
     working_directory: ~/repo
     steps:
       - attach_workspace:
-          at: ~/repo
+          at: ~/
       - run:
           name: 'Run unit tests'
           command: npm run test
+  test_e2e:
+    executor: react-viewer-docker
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/
+      - install-orient-express
+      - start-orient-express
+      - run:
+          name: 'Run e2e tests'
+          command: npm run test:e2e
 workflows:
   version: 2.1
   build_and_test:
@@ -92,5 +107,8 @@ workflows:
           requires:
             - checkout_react-viewer
       - test_unit:
+          requires:
+            - build_react-viewer
+      - test_e2e:
           requires:
             - build_react-viewer
