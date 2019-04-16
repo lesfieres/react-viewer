@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Books component test renders with items 1`] = `
+<React.Fragment>
+  <TextField
+    InputProps={
+      Object {
+        "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+          position="end"
+        >
+          <pure(SearchIcon) />
+        </WithStyles(WithFormControlContext(InputAdornment))>,
+      }
+    }
+    fullWidth={true}
+    id="standard-search"
+    label="Search"
+    margin="normal"
+    onChange={[Function]}
+    required={false}
+    select={false}
+    type="search"
+    value=""
+    variant="standard"
+  />
+  <ItemDisplaySelect
+    displayType="DISPLAY_CARD_TYPE_BIG_CARD"
+    setCurrentDisplayCardType={[Function]}
+  />
+  <WithStyles(Grid)
+    className="item-list"
+    container={true}
+    spacing={24}
+  >
+    <WithStyles(Grid)
+      item={true}
+      lg={4}
+      md={6}
+      xs={12}
+    >
+      <Item
+        item={
+          Object {
+            "author": Object {},
+            "id": "1",
+          }
+        }
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      lg={4}
+      md={6}
+      xs={12}
+    >
+      <Item
+        item={
+          Object {
+            "author": Object {},
+            "id": "2",
+          }
+        }
+      />
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
+</React.Fragment>
+`;
+
+exports[`Books component test renders without items 1`] = `
+<React.Fragment>
+  <TextField
+    InputProps={
+      Object {
+        "endAdornment": <WithStyles(WithFormControlContext(InputAdornment))
+          position="end"
+        >
+          <pure(SearchIcon) />
+        </WithStyles(WithFormControlContext(InputAdornment))>,
+      }
+    }
+    fullWidth={true}
+    id="standard-search"
+    label="Search"
+    margin="normal"
+    onChange={[Function]}
+    required={false}
+    select={false}
+    type="search"
+    value=""
+    variant="standard"
+  />
+  <ItemDisplaySelect
+    displayType="DISPLAY_CARD_TYPE_BIG_CARD"
+    setCurrentDisplayCardType={[Function]}
+  />
+  <WithStyles(Grid)
+    className="item-list"
+    container={true}
+    spacing={24}
+  />
+</React.Fragment>
+`;

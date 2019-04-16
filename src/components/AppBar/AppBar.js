@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
 
 const styles = () => ({
   appBar: {
@@ -39,6 +40,18 @@ const RVAppBar = props => {
         <Link to={''} className="btn btn-dark btn-block">
           <Button>Home</Button>
         </Link>
+        <Switch
+          defaultChecked
+          value="checked"
+          color="default"
+          onChange={() => {
+            if (props.currentPalette === 'dark') {
+              props.setTheme('light');
+            } else {
+              props.setTheme('dark');
+            }
+          }}
+        />
         <Button color="primary" variant="outlined">
           Login
         </Button>
