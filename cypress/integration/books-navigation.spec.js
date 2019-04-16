@@ -11,7 +11,7 @@ describe('Books navigation', () => {
 
     // Has 3 checkboxes to select card type.
     // Has BigCard type selected.
-    cy.get('input[type=checkbox]').should($checkboxes => {
+    cy.get('.App-body input[type=checkbox]').should($checkboxes => {
       expect($checkboxes).to.have.length(3);
       expect($checkboxes.eq(0)).not.to.be.checked;
       expect($checkboxes.eq(1)).not.to.be.checked;
@@ -19,10 +19,10 @@ describe('Books navigation', () => {
     });
 
     // Selecting the first checkbox.
-    cy.get('[type="checkbox"]')
+    cy.get('.App-body [type="checkbox"]')
       .first()
       .check();
-    cy.get('input[type=checkbox]').should($checkboxes => {
+    cy.get('.App-body input[type=checkbox]').should($checkboxes => {
       expect($checkboxes).to.have.length(3);
       expect($checkboxes.eq(0)).to.be.checked;
       expect($checkboxes.eq(1)).not.to.be.checked;
@@ -30,10 +30,10 @@ describe('Books navigation', () => {
     });
 
     // Selecting the second checkbox.
-    cy.get('[type="checkbox"]')
+    cy.get('.App-body [type="checkbox"]')
       .eq(1)
       .check();
-    cy.get('input[type=checkbox]').should($checkboxes => {
+    cy.get('.App-body input[type=checkbox]').should($checkboxes => {
       expect($checkboxes).to.have.length(3);
       expect($checkboxes.eq(0)).not.to.be.checked;
       expect($checkboxes.eq(1)).to.be.checked;
@@ -41,10 +41,10 @@ describe('Books navigation', () => {
     });
 
     // Selecting the third checkbox.
-    cy.get('[type="checkbox"]')
+    cy.get('.App-body [type="checkbox"]')
       .eq(2)
       .check();
-    cy.get('input[type=checkbox]').should($checkboxes => {
+    cy.get('.App-body input[type=checkbox]').should($checkboxes => {
       expect($checkboxes).to.have.length(3);
       expect($checkboxes.eq(0)).not.to.be.checked;
       expect($checkboxes.eq(1)).not.be.checked;
