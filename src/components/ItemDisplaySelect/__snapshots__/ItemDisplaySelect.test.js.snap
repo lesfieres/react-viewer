@@ -150,7 +150,7 @@ exports[`ItemDisplaySelect component test renders without crashing when has the 
     onChange={[Function]}
   />
   <WithStyles(Checkbox)
-    checked={true}
+    checked={false}
     checkedIcon={<pure(AssignmentIcon) />}
     classes={
       Object {
