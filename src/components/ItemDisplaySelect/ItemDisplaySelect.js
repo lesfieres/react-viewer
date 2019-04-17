@@ -23,22 +23,11 @@ const styles = {
   },
 };
 
-const prepareDisplayTypes = displayType => {
-  const displayTypes = [false, false, false];
-  switch (displayType) {
-    case DisplayCardType.List:
-      displayTypes[0] = true;
-      break;
-    case DisplayCardType.SmallCard:
-      displayTypes[1] = true;
-      break;
-    case DisplayCardType.BigCard:
-    default:
-      displayTypes[2] = true;
-      break;
-  }
-  return displayTypes;
-};
+const prepareDisplayTypes = displayType => [
+  displayType === DisplayCardType.List,
+  displayType === DisplayCardType.SmallCard,
+  displayType === DisplayCardType.BigCard,
+];
 
 const ItemDisplaySelect = props => {
   const { classes } = props;
