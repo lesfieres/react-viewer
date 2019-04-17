@@ -11,8 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    maxWidth: 500,
-    height: 180,
+    height: 170,
     marginBottom: 20,
   },
   cardMedia: {
@@ -24,6 +23,9 @@ const styles = {
   },
   cardActionArea: {
     display: 'flex',
+    '&:hover': {
+      backgroundColor: '#e0e0e0',
+    },
   },
 };
 

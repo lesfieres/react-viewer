@@ -6,8 +6,12 @@ import { withStyles } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Grid from '@material-ui/core/Grid';
 import Item from '../Item/Item';
 import { fetchBooks } from '../../redux/actions/bookActions';
+import ItemDisplaySelect, {
+  DisplayCardType,
+} from '../ItemDisplaySelect/ItemDisplaySelect';
 
 const styles = {
   searchInput: {
@@ -19,6 +23,9 @@ export const BooksNoStyled = props => {
   const { classes } = props;
   const [inputSearch, setInputSearch] = useState('');
   const [performingSearch, setPerformingSearch] = useState(false);
+  const [currentDisplayCardType, setCurrentDisplayCardType] = useState(
+    DisplayCardType.BigCard,
+  );
 
   const mapState = state => state.books;
   const { books } = useMappedState(mapState);
@@ -34,6 +41,30 @@ export const BooksNoStyled = props => {
   useEffect(() => {
     setPerformingSearch(false);
   }, [books]);
+
+  const createGridItem = item => {
+    switch (currentDisplayCardType) {
+      case DisplayCardType.List:
+        return (
+          <Grid item key={item.id} xs={12}>
+            <Item item={item} />
+          </Grid>
+        );
+      case DisplayCardType.SmallCard:
+        return (
+          <Grid item key={item.id} xs={12} md={4} lg={2}>
+            <Item item={item} />
+          </Grid>
+        );
+      case DisplayCardType.BigCard:
+      default:
+        return (
+          <Grid item key={item.id} xs={12} md={6} lg={4}>
+            <Item item={item} />
+          </Grid>
+        );
+    }
+  };
 
   return (
     <React.Fragment>
@@ -54,13 +85,16 @@ export const BooksNoStyled = props => {
           ),
         }}
       />
+      <ItemDisplaySelect
+        displayType={currentDisplayCardType}
+        setCurrentDisplayCardType={setCurrentDisplayCardType}
+      />
       {performingSearch ? (
         <CircularProgress className={classes.progress} />
       ) : (
-        <div className="item-list">
-          {!performingSearch
-            && books.map(book => <Item key={book.id} item={book} />)}
-        </div>
+        <Grid container spacing={24} className="item-list">
+          {!performingSearch && books.map(createGridItem)}
+        </Grid>
       )}
     </React.Fragment>
   );

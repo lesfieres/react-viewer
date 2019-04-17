@@ -1,13 +1,14 @@
 /* eslint-disable prop-types */
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
 
 const styles = () => ({
   appBar: {
@@ -20,7 +21,14 @@ const styles = () => ({
 });
 
 const RVAppBar = props => {
-  const { classes } = props;
+  const { classes, currentPalette, setTheme } = props;
+  const switchTheme = useCallback(() => {
+    if (currentPalette === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
+  }, [currentPalette, setTheme]);
 
   return (
     <AppBar position="static" color="default" className={classes.appBar}>
@@ -39,6 +47,12 @@ const RVAppBar = props => {
         <Link to={''} className="btn btn-dark btn-block">
           <Button>Home</Button>
         </Link>
+        <Switch
+          defaultChecked
+          value="checked"
+          color="default"
+          onChange={switchTheme}
+        />
         <Button color="primary" variant="outlined">
           Login
         </Button>

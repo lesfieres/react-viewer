@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemDisplaySelect component test marks the BigCard button as checked 1`] = `
+<div>
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(MenuIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(MenuIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(AppsIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AppsIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={true}
+    checkedIcon={<pure(AssignmentIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AssignmentIcon) />}
+    onChange={[Function]}
+  />
+</div>
+`;
+
+exports[`ItemDisplaySelect component test marks the List button as checked 1`] = `
+<div>
+  <WithStyles(Checkbox)
+    checked={true}
+    checkedIcon={<pure(MenuIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(MenuIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(AppsIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AppsIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(AssignmentIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AssignmentIcon) />}
+    onChange={[Function]}
+  />
+</div>
+`;
+
+exports[`ItemDisplaySelect component test marks the SmallCard button as checked 1`] = `
+<div>
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(MenuIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(MenuIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={true}
+    checkedIcon={<pure(AppsIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AppsIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(AssignmentIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AssignmentIcon) />}
+    onChange={[Function]}
+  />
+</div>
+`;
+
+exports[`ItemDisplaySelect component test renders without crashing when has the correct props 1`] = `
+<div>
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(MenuIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(MenuIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(AppsIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AppsIcon) />}
+    onChange={[Function]}
+  />
+  <WithStyles(Checkbox)
+    checked={false}
+    checkedIcon={<pure(AssignmentIcon) />}
+    classes={
+      Object {
+        "checked": undefined,
+        "root": undefined,
+      }
+    }
+    icon={<pure(AssignmentIcon) />}
+    onChange={[Function]}
+  />
+</div>
+`;
